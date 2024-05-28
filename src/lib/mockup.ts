@@ -1,5 +1,6 @@
 export type Curso = {
-  id: string;
+  id: number;
+  usercourseid: number;
   name: string;
   description: string;
   cover: string;
