@@ -22,7 +22,8 @@ export default function Page() {
   
       localStorage.setItem('TOKEN', response.data.token);
       localStorage.setItem('USER_ID', sub || '');
-      router.push('/');
+      
+      router.replace('/');
     } catch(e) {
       setErro(true);
     }

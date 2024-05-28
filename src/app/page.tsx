@@ -9,13 +9,13 @@ export default function Page() {
   const [courses, setCourses] = useState<any[]>([]);
 
   async function getValues() {
-    if (!localStorage.getItem('USER_ID')) return;
+    if (!localStorage.getItem('USER_ID')) {
+      const response = await api.get(`/courses`);
+      setCourses(response.data);
+      return
+    };
 
-    const response = await api.get(`/courses/${localStorage.getItem('USER_ID')}`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('TOKEN')}`
-      }
-    });
+    const response = await api.get(`/courses/${localStorage.getItem('USER_ID')}`);
 
     setCourses(response.data);
   }
